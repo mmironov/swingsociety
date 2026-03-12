@@ -35,6 +35,32 @@
   </script>
 
   <style>
+    /* Hero collage grid */
+    .collage-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      gap: 3px;
+    }
+    .collage-grid img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center 20%;
+    }
+    /* On mobile all 6 cells auto-place in 2-col × 3-row, reset any explicit placement */
+    .collage-grid img { grid-column: auto; grid-row: auto; }
+
+    @media (min-width: 768px) {
+      .collage-grid {
+        grid-template-columns: 1fr 1.5fr 1.5fr 1fr;
+        grid-template-rows: 1fr 1fr;
+      }
+      #collage-1 { grid-column: 1; grid-row: 1; }
+      #collage-2 { grid-column: 2; grid-row: 1 / 3; }
+      #collage-3 { grid-column: 3; grid-row: 1 / 3; }
+      #collage-4 { grid-column: 1; grid-row: 2; }
+      #collage-5 { grid-column: 4; grid-row: 1; }
+      #collage-6 { grid-column: 4; grid-row: 2; }
+    }
+
     body {
       background-color: #FFF8ED;
       color: #1A1207;
@@ -131,6 +157,7 @@
     .badge-beginner     { background: #d4f1d4; color: #1a5c1a; }
     .badge-intermediate { background: #fef3cd; color: #7a5200; }
     .badge-advanced     { background: #fde0d0; color: #7a1c00; }
+    .badge-all-levels   { background: #e0e7ff; color: #3730a3; }
 
     /* Smooth anchor offset for sticky nav */
     section[id] { scroll-margin-top: 72px; }
@@ -184,16 +211,16 @@
 ═══════════════════════════════════════════════════════════ -->
 <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
 
-  <!-- Background image (unsplash vintage dance) -->
-  <div class="absolute inset-0 z-0">
-    <img
-      src="img/all.jpg"
-      alt="Swing dancers in action"
-      class="w-full h-full object-cover object-center"
-      onerror="this.style.display='none'"
-    />
+  <!-- Background collage -->
+  <div class="absolute inset-0 z-0 collage-grid">
+    <img id="collage-1" alt="" />
+    <img id="collage-2" alt="" />
+    <img id="collage-3" alt="" />
+    <img id="collage-4" alt="" />
+    <img id="collage-5" alt="" />
+    <img id="collage-6" alt="" />
     <!-- Sepia tint layer -->
-    <div class="absolute inset-0" style="background: rgba(140,90,30,0.18); mix-blend-mode: multiply;"></div>
+    <div style="position:absolute; inset:0; background:rgba(140,90,30,0.18); mix-blend-mode:multiply;"></div>
   </div>
 
   <!-- Dark overlay -->
@@ -207,20 +234,20 @@
   <div class="relative z-30 text-center px-6 max-w-5xl mx-auto">
 
     <p class="font-body text-gold text-xs sm:text-sm font-semibold tracking-[0.3em] uppercase mb-6">
-      Lindy Hop, Jazz and Tap
+      Swing Society
     </p>
 
     <h1 class="font-display italic font-bold leading-tight mb-6 text-cream"
         style="font-size: clamp(3rem, 8vw, 5.5rem); text-shadow: 0 2px 20px rgba(0,0,0,0.5);">
-      Dance the Way<br />
-      <span style="color: #C9A84C;">It Was Meant</span><br />
-      to Feel
+      Swing Dancing,<br />
+      <span style="color: #C9A84C;">Jazz and Tap</span><br />
+      done in the old school way
     </h1>
 
     <p class="font-body text-cream/80 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
        style="text-shadow: 0 1px 6px rgba(0,0,0,0.4);">
-      Rooted in the Savoy Ballroom spirit, born in Bulgaria. We teach Lindy Hop and Jazz Tap
-      to dancers of all levels — with joy, history, and authentic swing.
+      We teach Lindy Hop, Jazz and Tap classes in Bulgaria. We get our inspiration
+      from the old clips and the orignical swing, jazz and tap dancers.
     </p>
 
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -259,35 +286,29 @@
 
     <div class="grid sm:grid-cols-5 gap-10 items-start">
       <div class="sm:col-span-3 space-y-6 font-body text-charcoal/80 leading-relaxed text-base">
-        <p>
-          <strong class="text-charcoal font-semibold">Swing Society</strong> was born from a simple, irresistible obsession:
-          the raw, electric joy of Lindy Hop as it was danced in the 1930s and 40s at Harlem's legendary Savoy Ballroom.
-          We watched the old footage — Frankie Manning flying through the air, Norma Miller tearing up the floor,
-          the whole community of dancers improvising together — and we knew we had to bring that spirit to Bulgaria.
-        </p>
-        <p>
-          Founded by dancers who travelled to international swing events, learned from master instructors, and fell
-          hopelessly in love with the vernacular jazz tradition, Swing Society opened its doors in Sofia and quickly
-          spread south to Stara Zagora. Our philosophy is simple: swing dancing is a living tradition, not a performance
-          art. We teach it the way it was always meant to be danced — socially, joyfully, and with deep respect for
-          its African-American roots and the musicians who made it all possible.
-        </p>
-        <p>
-          Today our community spans hundreds of dancers across Bulgaria. Whether you step onto the floor for the first
-          time or have been dancing for years, you'll find a home here. We offer weekly group classes, drop-in sessions,
-          social dances, and special events — all held in venues with good floors, good music, and even better company.
-        </p>
+        
+
+        <p>Swing Society is several things in one — a swing dance school for people from 10 to 100 years old, for all levels, with exceptionally experienced teachers who travel all over the world and bring authentic stories, experience, and inspiration back to Bulgaria.</p>
+
+        <p>Swing Society is also an underground culture, but one that is open to everyone. Some people just dance with us once a week after work, some bring their children and dance with them, and some come to meet new people. With the most passionate and advanced students, we travel to dozens of countries around the world, often participating in competitions or learning from some of the creators of the genre.</p>
+
+        <p>At the beginning, we had no performances — only dancing and lessons. We danced in other schools, but we realized that for us it wasn’t enough just to dance; we wanted to learn more about the culture, the stage, and performance. So we created Swing Society. In recent years, we have been receiving more and more invitations to perform at private parties, corporate events, and festivals in Bulgaria and abroad. Although the swing scene in Bulgaria is still niche, it continues to grow, and that makes us very happy because we believe we are an essential part of that development.</p>
+
+        <p>Our cause and mission are to preserve and spread authentic swing and jazz culture in Bulgaria, following the American model and tradition. Swing was born as an urban culture of young and modern people. We believe that jazz cultivates and refines taste, and that good music has no age limit. That is why we continue to invest more and more in our school and in the experiences we share with everyone.</p>
+
+        <p>Our dream is for swing to be taught in Bulgarian schools.</p>
+
       </div>
 
       <div class="sm:col-span-2 space-y-4">
         <!-- Vintage stat cards -->
         <div class="bg-parchment border border-gold/30 rounded p-6 card-hover shadow-sm">
-          <p class="font-display text-4xl font-bold text-gold">8+</p>
-          <p class="font-body text-sm text-charcoal/70 mt-1">Years of swing in Bulgaria</p>
+          <p class="font-display text-4xl font-bold text-gold">10+</p>
+          <p class="font-body text-sm text-charcoal/70 mt-1">Years swing dance classes</p>
         </div>
         <div class="bg-parchment border border-gold/30 rounded p-6 card-hover shadow-sm">
           <p class="font-display text-4xl font-bold text-gold">400+</p>
-          <p class="font-body text-sm text-charcoal/70 mt-1">Students who found their groove</p>
+          <p class="font-body text-sm text-charcoal/70 mt-1">Inspired students</p>
         </div>
         <div class="bg-parchment border border-gold/30 rounded p-6 card-hover shadow-sm">
           <p class="font-display text-4xl font-bold text-gold">2</p>
@@ -295,7 +316,7 @@
         </div>
         <div class="bg-parchment border border-gold/30 rounded p-6 card-hover shadow-sm">
           <p class="font-display text-4xl font-bold text-gold">∞</p>
-          <p class="font-body text-sm text-charcoal/70 mt-1">The joy of a good swing-out</p>
+          <p class="font-body text-sm text-charcoal/70 mt-1">The joy of a good night out dancing</p>
         </div>
       </div>
     </div>
@@ -328,7 +349,7 @@
       <div class="bg-parchment border border-gold/30 rounded-sm overflow-hidden card-hover shadow-sm">
         <div class="h-56 overflow-hidden bg-charcoal/10 relative">
           <img
-            src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80"
+            src="img/kalina-miro-lindy.jpg"
             alt="Lindy Hop dancers"
             class="w-full h-full object-cover object-top sepia-[0.3] hover:sepia-0 transition-all duration-500"
             onerror="this.parentElement.style.background='#1C1C1C'"
@@ -337,7 +358,7 @@
           <span class="absolute bottom-4 left-5 font-display italic text-cream text-2xl font-bold" style="text-shadow:0 1px 6px rgba(0,0,0,0.6)">Lindy Hop</span>
         </div>
         <div class="p-7">
-          <p class="font-body text-xs text-gold font-semibold tracking-widest uppercase mb-3">The Original Swing Dance · 1920s Harlem</p>
+          <p class="font-body text-xs text-gold font-semibold tracking-widest uppercase mb-3">The Original Swing Dance · 1930s Harlem</p>
           <p class="font-body text-charcoal/80 leading-relaxed mb-4">
             Lindy Hop is the mother of all swing dances — an Afro-American vernacular art form born on the dance floors
             of Harlem during the Jazz Age. It blends African rhythms, European partner dance traditions, and the
@@ -359,7 +380,7 @@
       <div class="bg-parchment border border-gold/30 rounded-sm overflow-hidden card-hover shadow-sm">
         <div class="h-56 overflow-hidden bg-charcoal/10 relative">
           <img
-            src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80"
+            src="img/rosi.jpg"
             alt="Solo Jazz dancers"
             class="w-full h-full object-cover object-top sepia-[0.3] hover:sepia-0 transition-all duration-500"
             onerror="this.parentElement.style.background='#1C1C1C'"
@@ -390,7 +411,7 @@
       <div class="bg-parchment border border-gold/30 rounded-sm overflow-hidden card-hover shadow-sm">
         <div class="h-56 overflow-hidden bg-charcoal/10 relative">
           <img
-            src="https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=800&q=80"
+            src="img/deni-tap.jpg"
             alt="Tap dancer"
             class="w-full h-full object-cover object-top sepia-[0.3] hover:sepia-0 transition-all duration-500"
             onerror="this.parentElement.style.background='#1C1C1C'"
@@ -436,12 +457,12 @@
   <div class="max-w-6xl mx-auto">
 
     <div class="text-center mb-14">
-      <p class="font-body text-gold text-xs font-semibold tracking-[0.25em] uppercase mb-3">The People Behind the Music</p>
-      <h2 class="font-display text-4xl sm:text-5xl font-bold text-cream mb-6">Our Instructors</h2>
+      <p class="font-body text-gold text-xs font-semibold tracking-[0.25em] uppercase mb-3">Let's meet</p>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold text-cream mb-6">Our Team</h2>
       <div class="divider"><span class="text-gold">★</span></div>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
       <!-- Rosi -->
       <div class="bg-cream/5 border border-gold/20 rounded-sm p-6 card-hover text-center">
@@ -456,8 +477,15 @@
         <p class="font-body text-gold text-xs font-semibold tracking-wider uppercase mb-2">Lindy Hop &amp; Jazz</p>
         <p class="font-body text-xs text-cream/50 tracking-wider mb-4">Stara Zagora</p>
         <p class="font-body text-sm text-cream/65 leading-relaxed">
-          Trained at international camps including Herräng and Beantown, Rosi has been dancing and teaching Lindy Hop
-          for over a decade. Her classes are known for clarity, warmth, and an infectious love of jazz.
+          Passionate about swing music and the vibrant spirit of jazz, she has been dancing for
+          over eight years, focusing mainly on Lindy Hop and Authentic Jazz. She has attended more
+          than 30 international swing events and festivals, continuously learning from and drawing
+          inspiration from the global dance community.
+
+          Since July 2025, she has been teaching jazz classes in Stara Zagora, actively helping
+          grow the local swing scene and building a welcoming community through regular monthly
+          parties. Her teaching is driven by a genuine passion for sharing the joy, rhythm, and
+          freedom of jazz dance with others.
         </p>
       </div>
 
@@ -510,8 +538,58 @@
         <p class="font-body text-gold text-xs font-semibold tracking-wider uppercase mb-2">Tap &amp; Jazz</p>
         <p class="font-body text-xs text-cream/50 tracking-wider mb-4">Sofia</p>
         <p class="font-body text-sm text-cream/65 leading-relaxed">
-          Deni leads the Stara Zagora community with the relaxed confidence of someone who's danced through thousands
-          of songs. She specialises in connection, floorcraft, and runs the city's beloved monthly social dance.
+          Deni is an teacher with experience and passion for tap dance and solo jazz.
+
+          She enjoys classic choreographies and shares the belief that the most beautiful things are
+          hidden in history and tradition. That is why her solo jazz classes draw inspiration from
+          the great dancers of the 1930s and 1940s.
+
+          She has attended tap dance classes by Chester Whitmore, Daniel Larsson, Josette Wiggan,
+          and Thomas Wadelton in Herräng, but her true inspiration comes from that circle of tap
+          dancers — the “dinosaurs” of tap dancing. 🕺
+        </p>
+      </div>
+
+      <!-- Mitko -->
+      <div class="bg-cream/5 border border-gold/20 rounded-sm p-6 card-hover text-center">
+        <div class="w-24 h-24 rounded-full bg-parchment/10 border-2 border-gold/40 mx-auto mb-5 overflow-hidden">
+          <img
+            src="img/mitko.jpeg"
+            alt="Mitko"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <h3 class="font-display text-xl font-bold text-cream mb-1">Mitko</h3>
+        <p class="font-body text-gold text-xs font-semibold tracking-wider uppercase mb-2">Music &amp; Parties</p>
+        <p class="font-body text-xs text-cream/50 tracking-wider mb-4">Sofia</p>
+        <p class="font-body text-sm text-cream/65 leading-relaxed">
+          A passionate swing dancer who discovered jazz movement as a natural extension of rhythm and musicality, Miro
+          brings deep groove and playfulness to every class.
+        </p>
+      </div>
+
+      <!-- Viki -->
+      <div class="bg-cream/5 border border-gold/20 rounded-sm p-6 card-hover text-center">
+        <div class="w-24 h-24 rounded-full bg-parchment/10 border-2 border-gold/40 mx-auto mb-5 overflow-hidden">
+          <img
+            src="img/viki.jpg"
+            alt="Viki"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <h3 class="font-display text-xl font-bold text-cream mb-1">Viki</h3>
+        <p class="font-body text-gold text-xs font-semibold tracking-wider uppercase mb-2">Design &amp; Visuals</p>
+        <p class="font-body text-xs text-cream/50 tracking-wider mb-4">Sofia</p>
+        <p class="font-body text-sm text-cream/65 leading-relaxed">
+          Deni is an teacher with experience and passion for tap dance and solo jazz.
+
+          She enjoys classic choreographies and shares the belief that the most beautiful things are
+          hidden in history and tradition. That is why her solo jazz classes draw inspiration from
+          the great dancers of the 1930s and 1940s.
+
+          She has attended tap dance classes by Chester Whitmore, Daniel Larsson, Josette Wiggan,
+          and Thomas Wadelton in Herräng, but her true inspiration comes from that circle of tap
+          dancers — the “dinosaurs” of tap dancing. 🕺
         </p>
       </div>
 
@@ -543,7 +621,7 @@
       <h3 class="font-display text-2xl font-bold text-charcoal mb-1">
         <span class="text-gold">—</span> Sofia
       </h3>
-      <p class="font-body text-sm text-charcoal/55 mb-5">Studio Ritmo, ul. Positano 22, Sofia 1000</p>
+      <p class="font-body text-sm text-charcoal/55 mb-5">National Students' House</p>
 
       <div class="overflow-x-auto rounded-sm border border-gold/25 shadow-sm">
         <table class="w-full font-body text-sm">
@@ -553,51 +631,44 @@
               <th class="text-left px-5 py-3 font-semibold tracking-wider text-xs uppercase">Time</th>
               <th class="text-left px-5 py-3 font-semibold tracking-wider text-xs uppercase">Class</th>
               <th class="text-left px-5 py-3 font-semibold tracking-wider text-xs uppercase">Level</th>
-              <th class="text-left px-5 py-3 font-semibold tracking-wider text-xs uppercase">Instructor</th>
+              <th class="text-left px-5 py-3 font-semibold tracking-wider text-xs uppercase">Teachers</th>
             </tr>
           </thead>
           <tbody>
             <tr class="schedule-row">
               <td class="px-5 py-3 font-medium">Monday</td>
-              <td class="px-5 py-3 text-charcoal/70">19:00 – 20:30</td>
+              <td class="px-5 py-3 text-charcoal/70">20:15 – 21:25</td>
               <td class="px-5 py-3">Lindy Hop</td>
               <td class="px-5 py-3"><span class="badge badge-beginner">Beginner</span></td>
-              <td class="px-5 py-3 text-charcoal/70">Marta Koleva</td>
+              <td class="px-5 py-3 text-charcoal/70">Kalina & Miro</td>
             </tr>
             <tr class="schedule-row">
               <td class="px-5 py-3 font-medium">Tuesday</td>
-              <td class="px-5 py-3 text-charcoal/70">19:30 – 21:00</td>
-              <td class="px-5 py-3">Jazz Tap</td>
-              <td class="px-5 py-3"><span class="badge badge-beginner">Beginner</span></td>
-              <td class="px-5 py-3 text-charcoal/70">Elena Petkova</td>
+              <td class="px-5 py-3 text-charcoal/70"></td>
+              <td class="px-5 py-3"></td>
+              <td class="px-5 py-3"></td>
+              <td class="px-5 py-3 text-charcoal/70"></td>
             </tr>
             <tr class="schedule-row">
               <td class="px-5 py-3 font-medium">Wednesday</td>
-              <td class="px-5 py-3 text-charcoal/70">19:00 – 20:30</td>
+              <td class="px-5 py-3 text-charcoal/70">19:30 – 21:40</td>
               <td class="px-5 py-3">Lindy Hop</td>
               <td class="px-5 py-3"><span class="badge badge-intermediate">Intermediate</span></td>
-              <td class="px-5 py-3 text-charcoal/70">Viktor Angelov</td>
+              <td class="px-5 py-3 text-charcoal/70">Miro & Kalina</td>
+            </tr>
+            <tr class="schedule-row">
+              <td class="px-5 py-3 font-medium">Wednesday</td>
+              <td class="px-5 py-3 text-charcoal/70">20:50 – 22:00</td>
+              <td class="px-5 py-3">Jazz</td>
+              <td class="px-5 py-3"><span class="badge badge-all-levels">All Levels</span></td>
+              <td class="px-5 py-3 text-charcoal/70">Deni</td>
             </tr>
             <tr class="schedule-row">
               <td class="px-5 py-3 font-medium">Thursday</td>
-              <td class="px-5 py-3 text-charcoal/70">20:00 – 21:00</td>
-              <td class="px-5 py-3">Solo Jazz</td>
-              <td class="px-5 py-3"><span class="badge badge-intermediate">Intermediate</span></td>
-              <td class="px-5 py-3 text-charcoal/70">Viktor Angelov</td>
-            </tr>
-            <tr class="schedule-row">
-              <td class="px-5 py-3 font-medium">Friday</td>
-              <td class="px-5 py-3 text-charcoal/70">18:30 – 20:00</td>
-              <td class="px-5 py-3">Jazz Tap</td>
-              <td class="px-5 py-3"><span class="badge badge-intermediate">Intermediate</span></td>
-              <td class="px-5 py-3 text-charcoal/70">Elena Petkova</td>
-            </tr>
-            <tr class="schedule-row">
-              <td class="px-5 py-3 font-medium">Saturday</td>
-              <td class="px-5 py-3 text-charcoal/70">11:00 – 12:30</td>
+              <td class="px-5 py-3 text-charcoal/70">20:15 – 21:25</td>
               <td class="px-5 py-3">Lindy Hop</td>
-              <td class="px-5 py-3"><span class="badge badge-advanced">Advanced</span></td>
-              <td class="px-5 py-3 text-charcoal/70">Marta Koleva</td>
+              <td class="px-5 py-3"><span class="badge badge-beginner">Beginner</span></td>
+              <td class="px-5 py-3 text-charcoal/70">Kalina & Miro</td>
             </tr>
           </tbody>
         </table>
@@ -619,30 +690,16 @@
               <th class="text-left px-5 py-3 font-semibold tracking-wider text-xs uppercase">Time</th>
               <th class="text-left px-5 py-3 font-semibold tracking-wider text-xs uppercase">Class</th>
               <th class="text-left px-5 py-3 font-semibold tracking-wider text-xs uppercase">Level</th>
-              <th class="text-left px-5 py-3 font-semibold tracking-wider text-xs uppercase">Instructor</th>
+              <th class="text-left px-5 py-3 font-semibold tracking-wider text-xs uppercase">Teacher</th>
             </tr>
           </thead>
           <tbody>
             <tr class="schedule-row">
-              <td class="px-5 py-3 font-medium">Tuesday</td>
-              <td class="px-5 py-3 text-charcoal/70">19:00 – 20:30</td>
-              <td class="px-5 py-3">Lindy Hop</td>
-              <td class="px-5 py-3"><span class="badge badge-beginner">Beginner</span></td>
-              <td class="px-5 py-3 text-charcoal/70">Georgi Stoyanov</td>
-            </tr>
-            <tr class="schedule-row">
               <td class="px-5 py-3 font-medium">Thursday</td>
-              <td class="px-5 py-3 text-charcoal/70">19:00 – 20:30</td>
-              <td class="px-5 py-3">Lindy Hop</td>
-              <td class="px-5 py-3"><span class="badge badge-intermediate">Intermediate</span></td>
-              <td class="px-5 py-3 text-charcoal/70">Georgi Stoyanov</td>
-            </tr>
-            <tr class="schedule-row">
-              <td class="px-5 py-3 font-medium">Saturday</td>
-              <td class="px-5 py-3 text-charcoal/70">10:30 – 12:00</td>
-              <td class="px-5 py-3">Jazz Tap</td>
-              <td class="px-5 py-3"><span class="badge badge-beginner">Beginner</span></td>
-              <td class="px-5 py-3 text-charcoal/70">Elena Petkova</td>
+              <td class="px-5 py-3 text-charcoal/70">17:30 – 18:30</td>
+              <td class="px-5 py-3">Jazz</td>
+              <td class="px-5 py-3"><span class="badge badge-all-levels">All Levels</span></td>
+              <td class="px-5 py-3 text-charcoal/70">Rosi</td>
             </tr>
           </tbody>
         </table>
@@ -673,98 +730,10 @@
       <p class="font-body text-gold text-xs font-semibold tracking-[0.25em] uppercase mb-3">Fresh Start</p>
       <h2 class="font-display text-4xl sm:text-5xl font-bold text-charcoal mb-4">New Groups Starting Soon</h2>
       <p class="font-body text-charcoal/60 max-w-xl mx-auto">
-        Never danced before? Perfect. Our beginner groups start from absolute zero — no partner, no experience needed.
-        Just bring comfortable shoes and an open mind.
+        Follow our website and social media for announcements of new beginner-friendly groups starting every few months in both Sofia and Stara Zagora. Whether you're looking to learn Lindy Hop, Jazz, or Tap, we have a class for you!
       </p>
       <div class="divider mt-6"><span>★</span></div>
     </div>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <!-- Group 1 -->
-      <div class="bg-cream border border-gold/35 rounded-sm p-6 card-hover shadow-sm relative overflow-hidden">
-        <div class="absolute top-0 left-0 right-0 h-1 bg-gold"></div>
-        <span class="badge badge-beginner mb-4 block w-fit">Beginner</span>
-        <h3 class="font-display text-xl font-bold text-charcoal mb-1">Lindy Hop — Start Group</h3>
-        <p class="font-body text-xs text-gold font-semibold tracking-wider uppercase mb-4">Sofia · Studio Ritmo</p>
-        <div class="space-y-2 font-body text-sm text-charcoal/70 mb-5">
-          <div class="flex items-center gap-2">
-            <svg class="w-4 h-4 text-gold flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-            <span>Starts Monday, 7 April 2026</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <svg class="w-4 h-4 text-gold flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            <span>Mondays, 19:00 – 20:30</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <svg class="w-4 h-4 text-gold flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-            <span>6 spots remaining</span>
-          </div>
-        </div>
-        <a href="mailto:hello@swingsociety.bg?subject=Lindy Hop Beginner Group – Sofia April"
-           class="block text-center w-full py-2.5 bg-gold text-charcoal font-semibold font-body text-xs tracking-wider uppercase rounded hover:bg-goldDark transition-colors">
-          Reserve My Spot
-        </a>
-      </div>
-
-      <!-- Group 2 -->
-      <div class="bg-cream border border-gold/35 rounded-sm p-6 card-hover shadow-sm relative overflow-hidden">
-        <div class="absolute top-0 left-0 right-0 h-1 bg-gold"></div>
-        <span class="badge badge-beginner mb-4 block w-fit">Beginner</span>
-        <h3 class="font-display text-xl font-bold text-charcoal mb-1">Jazz Tap — Foundations</h3>
-        <p class="font-body text-xs text-gold font-semibold tracking-wider uppercase mb-4">Sofia · Studio Ritmo</p>
-        <div class="space-y-2 font-body text-sm text-charcoal/70 mb-5">
-          <div class="flex items-center gap-2">
-            <svg class="w-4 h-4 text-gold flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-            <span>Starts Tuesday, 8 April 2026</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <svg class="w-4 h-4 text-gold flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            <span>Tuesdays, 19:30 – 21:00</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <svg class="w-4 h-4 text-gold flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-            <span>4 spots remaining</span>
-          </div>
-        </div>
-        <a href="mailto:hello@swingsociety.bg?subject=Jazz Tap Beginner Group – Sofia April"
-           class="block text-center w-full py-2.5 bg-gold text-charcoal font-semibold font-body text-xs tracking-wider uppercase rounded hover:bg-goldDark transition-colors">
-          Reserve My Spot
-        </a>
-      </div>
-
-      <!-- Group 3 -->
-      <div class="bg-cream border border-gold/35 rounded-sm p-6 card-hover shadow-sm relative overflow-hidden">
-        <div class="absolute top-0 left-0 right-0 h-1 bg-brown"></div>
-        <span class="badge badge-beginner mb-4 block w-fit">Beginner</span>
-        <h3 class="font-display text-xl font-bold text-charcoal mb-1">Lindy Hop — Start Group</h3>
-        <p class="font-body text-xs text-gold font-semibold tracking-wider uppercase mb-4">Stara Zagora · Tanz Studio</p>
-        <div class="space-y-2 font-body text-sm text-charcoal/70 mb-5">
-          <div class="flex items-center gap-2">
-            <svg class="w-4 h-4 text-gold flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-            <span>Starts Tuesday, 15 April 2026</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <svg class="w-4 h-4 text-gold flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            <span>Tuesdays, 19:00 – 20:30</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <svg class="w-4 h-4 text-gold flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-            <span>8 spots remaining</span>
-          </div>
-        </div>
-        <a href="mailto:hello@swingsociety.bg?subject=Lindy Hop Beginner Group – Stara Zagora April"
-           class="block text-center w-full py-2.5 bg-gold text-charcoal font-semibold font-body text-xs tracking-wider uppercase rounded hover:bg-goldDark transition-colors">
-          Reserve My Spot
-        </a>
-      </div>
-
-    </div>
-
-    <p class="font-body text-sm text-charcoal/50 text-center mt-8">
-      Tap shoes can be rented for the first few classes. All other classes require comfortable flat shoes or dance sneakers.
-    </p>
-
   </div>
 </section>
 
@@ -787,92 +756,76 @@
       <div class="divider"><span>★</span></div>
     </div>
 
-    <div class="grid sm:grid-cols-3 gap-7">
+    <!-- Swing Buzz Festival 2026 -->
+    <div class="bg-parchment border border-gold/30 rounded-sm overflow-hidden shadow-sm max-w-4xl mx-auto">
 
-      <!-- Event 1 -->
-      <div class="bg-parchment border border-gold/30 rounded-sm overflow-hidden card-hover shadow-sm flex flex-col">
-        <div class="bg-charcoal px-6 py-5 flex items-start justify-between">
+      <!-- Header -->
+      <div class="bg-charcoal px-8 py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div class="flex items-center gap-6">
+          <img src="img/swing-buzz-logo.svg" alt="Swing Buzz Festival" class="h-16 w-auto flex-shrink-0" />
           <div>
-            <p class="font-display text-3xl font-bold text-gold">19</p>
-            <p class="font-body text-xs text-cream/60 uppercase tracking-widest">April 2026</p>
-          </div>
-          <span class="font-body text-xs text-cream/50 border border-cream/20 rounded px-2 py-1 tracking-wider uppercase">
-            Social Dance
-          </span>
-        </div>
-        <div class="p-6 flex flex-col flex-1">
-          <h3 class="font-display text-xl font-bold text-charcoal mb-2">Savoy Night — Monthly Swing Dance</h3>
-          <p class="font-body text-xs text-gold font-semibold tracking-wider uppercase mb-3">Sofia · Club Shtastliveca</p>
-          <p class="font-body text-sm text-charcoal/70 leading-relaxed flex-1">
-            Our beloved monthly social dance returns. Four hours of live-DJ swing music spanning the 1930s through the 50s.
-            All dancers welcome — beginners, intermediates, and everyone in between. Lindy Hop, Balboa, Blues.
-            Doors open at 20:00. Dance starts at 20:30. Dress code: vintage-inspired or smart casual.
-          </p>
-          <div class="mt-5 pt-4 border-t border-gold/20 flex items-center justify-between">
-            <span class="font-body text-xs text-charcoal/50">20:00 – 00:30</span>
-            <a href="mailto:hello@swingsociety.bg?subject=Savoy Night April"
-               class="font-body text-xs font-semibold text-gold hover:text-goldDark uppercase tracking-wider transition-colors">
-              Get Tickets →
-            </a>
+            <p class="font-display text-2xl sm:text-3xl font-bold text-gold leading-tight">Swing Buzz Festival 2026</p>
+            <p class="font-body text-xs text-cream/60 uppercase tracking-widest mt-1">September 25–27, 2026 · Sofia, Bulgaria</p>
           </div>
         </div>
+        <span class="font-body text-xs text-cream/50 border border-cream/20 rounded px-3 py-1 tracking-wider uppercase self-start sm:self-center whitespace-nowrap">
+          Festival
+        </span>
       </div>
 
-      <!-- Event 2 -->
-      <div class="bg-parchment border border-gold/30 rounded-sm overflow-hidden card-hover shadow-sm flex flex-col">
-        <div class="bg-charcoal px-6 py-5 flex items-start justify-between">
-          <div>
-            <p class="font-display text-3xl font-bold text-gold">3–4</p>
-            <p class="font-body text-xs text-cream/60 uppercase tracking-widest">May 2026</p>
-          </div>
-          <span class="font-body text-xs text-cream/50 border border-cream/20 rounded px-2 py-1 tracking-wider uppercase">
-            Workshop
-          </span>
-        </div>
-        <div class="p-6 flex flex-col flex-1">
-          <h3 class="font-display text-xl font-bold text-charcoal mb-2">Tap Intensive Weekend</h3>
-          <p class="font-body text-xs text-gold font-semibold tracking-wider uppercase mb-3">Sofia · Studio Ritmo</p>
-          <p class="font-body text-sm text-charcoal/70 leading-relaxed flex-1">
-            A full weekend dedicated to Jazz Tap, led by guest instructor <strong>Ana Sokolova</strong> from Prague —
-            one of Europe's most passionate rhythm tap educators. Saturday covers foundational rhythms and improvisation;
-            Sunday explores Hoofer tradition and performance. Tap shoes required.
-          </p>
-          <div class="mt-5 pt-4 border-t border-gold/20 flex items-center justify-between">
-            <span class="font-body text-xs text-charcoal/50">Sat–Sun, 10:00 – 18:00</span>
-            <a href="mailto:hello@swingsociety.bg?subject=Tap Intensive May"
-               class="font-body text-xs font-semibold text-gold hover:text-goldDark uppercase tracking-wider transition-colors">
-              Register →
-            </a>
-          </div>
-        </div>
-      </div>
+      <!-- Body -->
+      <div class="p-8">
+        <p class="font-body text-sm text-charcoal/75 leading-relaxed mb-8">
+          An old school jazz and Lindy Hop celebration held in the heart of Sofia — three days of
+          classes, historical talks, live music, and social dancing with an international community.
+          Classes take place at the National Students' House; evening parties at the Municipal Home
+          of Culture "Krasno selo" run from 22:00 to 04:00.
+          Registration opens <strong>March 16th</strong>.
+        </p>
 
-      <!-- Event 3 -->
-      <div class="bg-parchment border border-gold/30 rounded-sm overflow-hidden card-hover shadow-sm flex flex-col">
-        <div class="bg-charcoal px-6 py-5 flex items-start justify-between">
+        <div class="grid sm:grid-cols-3 gap-6 mb-8">
+
           <div>
-            <p class="font-display text-3xl font-bold text-gold">24</p>
-            <p class="font-body text-xs text-cream/60 uppercase tracking-widest">May 2026</p>
+            <p class="font-body text-xs font-semibold text-gold uppercase tracking-wider mb-2">Teachers</p>
+            <ul class="font-body text-sm text-charcoal/70 space-y-1">
+              <li>Alex</li>
+              <li>Patrik &amp; Lizette</li>
+              <li>Sakarias &amp; Elice</li>
+            </ul>
           </div>
-          <span class="font-body text-xs text-cream/50 border border-cream/20 rounded px-2 py-1 tracking-wider uppercase">
-            Special Event
-          </span>
+
+          <div>
+            <p class="font-body text-xs font-semibold text-gold uppercase tracking-wider mb-2">Live Music</p>
+            <ul class="font-body text-sm text-charcoal/70 space-y-1">
+              <li>Hornsgatan</li>
+              <li>Swing Society Collective</li>
+            </ul>
+            <p class="font-body text-xs font-semibold text-gold uppercase tracking-wider mt-4 mb-2">DJs</p>
+            <ul class="font-body text-sm text-charcoal/70 space-y-1">
+              <li>Pawel</li>
+              <li>Dimas</li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="font-body text-xs font-semibold text-gold uppercase tracking-wider mb-2">Passes</p>
+            <ul class="font-body text-sm text-charcoal/70 space-y-1">
+              <li>Full Pass Gold</li>
+              <li>Full Pass</li>
+              <li>Jazz Performance Track</li>
+              <li>Party Pass Plus</li>
+              <li>Party Pass</li>
+            </ul>
+          </div>
+
         </div>
-        <div class="p-6 flex flex-col flex-1">
-          <h3 class="font-display text-xl font-bold text-charcoal mb-2">Bulgarian Swing Fest — Stara Zagora</h3>
-          <p class="font-body text-xs text-gold font-semibold tracking-wider uppercase mb-3">Stara Zagora · Gradski Park</p>
-          <p class="font-body text-sm text-charcoal/70 leading-relaxed flex-1">
-            Our annual outdoor swing festival — a full day of classes, exhibitions, and a grand evening social dance
-            under the open sky. Guest instructors from across Europe. Live jazz band performing two sets.
-            Free admission to the evening dance for all registered students. A day that always leaves you wanting more.
-          </p>
-          <div class="mt-5 pt-4 border-t border-gold/20 flex items-center justify-between">
-            <span class="font-body text-xs text-charcoal/50">11:00 – 23:00</span>
-            <a href="mailto:hello@swingsociety.bg?subject=Bulgarian Swing Fest 2026"
-               class="font-body text-xs font-semibold text-gold hover:text-goldDark uppercase tracking-wider transition-colors">
-              Learn More →
-            </a>
-          </div>
+
+        <div class="pt-6 border-t border-gold/20 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <span class="font-body text-xs text-charcoal/50">Intermediate · Advanced · Pro · Jazz Performance Track</span>
+          <a href="https://www.swingbuzz.eu" target="_blank" rel="noopener"
+             class="font-body text-xs font-semibold text-gold hover:text-goldDark uppercase tracking-wider transition-colors">
+            swingbuzz.eu →
+          </a>
         </div>
       </div>
 
@@ -903,96 +856,52 @@
 
       <!-- Review 1 -->
       <div class="bg-cream/5 border border-gold/20 rounded-sm p-7 card-hover">
-        <div class="flex mb-4">
-          <span class="text-gold text-lg">★★★★★</span>
-        </div>
-        <p class="font-body text-cream/80 leading-relaxed mb-6 text-sm">
-          <span class="quote-mark"></span>I walked in with two left feet and walked out three months later with a swing-out
-          I'm actually proud of. Marta is the most patient, encouraging teacher I've ever had.
-          The community here is unlike anything I've experienced in a fitness or dance class before — it actually feels like family.
+        <div class="flex mb-4"><span class="text-gold text-lg">★★★★★</span></div>
+        <p class="font-body text-cream/80 leading-relaxed text-sm">
+          <span class="quote-mark"></span>Perfect place to learn Lindy Hop in Sofia, they're totally experienced and humble,
+          capable of evaluating your level and so cheerful to motivate you. Definitely suggest everyone
+          who'd like to improve themselves or just begin!
         </p>
-        <div class="border-t border-gold/15 pt-4">
-          <p class="font-body font-semibold text-cream text-sm">Ivelina S.</p>
-          <p class="font-body text-xs text-cream/40 mt-0.5">Sofia · 8 months dancing</p>
-        </div>
       </div>
 
       <!-- Review 2 -->
       <div class="bg-cream/5 border border-gold/20 rounded-sm p-7 card-hover">
-        <div class="flex mb-4">
-          <span class="text-gold text-lg">★★★★★</span>
-        </div>
-        <p class="font-body text-cream/80 leading-relaxed mb-6 text-sm">
-          <span class="quote-mark"></span>Jazz Tap with Elena changed the way I listen to music. I'm a musician myself
-          and I thought I had rhythm — she showed me I had no idea. In the best possible way.
-          Every class is an adventure. The historical context she brings is just a bonus.
+        <div class="flex mb-4"><span class="text-gold text-lg">★★★★★</span></div>
+        <p class="font-body text-cream/80 leading-relaxed text-sm">
+          <span class="quote-mark"></span>The best jazz dance school in Sofia. The teachers are great people, who are in love
+          with the old time jazz culture. If you decide to go and try a class, get ready for jazz dancing
+          becoming the one thing you can't wait for in your regular day!
         </p>
-        <div class="border-t border-gold/15 pt-4">
-          <p class="font-body font-semibold text-cream text-sm">Dimitar R.</p>
-          <p class="font-body text-xs text-cream/40 mt-0.5">Sofia · Jazz Tap student</p>
-        </div>
       </div>
 
       <!-- Review 3 -->
       <div class="bg-cream/5 border border-gold/20 rounded-sm p-7 card-hover">
-        <div class="flex mb-4">
-          <span class="text-gold text-lg">★★★★★</span>
-        </div>
-        <p class="font-body text-cream/80 leading-relaxed mb-6 text-sm">
-          <span class="quote-mark"></span>I'd tried salsa and bachata and never felt like I truly belonged.
-          Then I found Swing Society and something clicked. The music, the history, the way everyone
-          looks after each other on the floor — I've been coming every week for two years and I still
-          can't wait for Thursday night.
+        <div class="flex mb-4"><span class="text-gold text-lg">★★★★★</span></div>
+        <p class="font-body text-cream/80 leading-relaxed text-sm">
+          <span class="quote-mark"></span>The dance school is at a very central location and easy to access with public transport.
+          As for the school itself — it focuses on swing dancing from the 40s and conserving the soul and
+          style of that time. If you enjoy jazz, dancing, refreshing atmosphere — this is the place to be.
         </p>
-        <div class="border-t border-gold/15 pt-4">
-          <p class="font-body font-semibold text-cream text-sm">Ralitsa M.</p>
-          <p class="font-body text-xs text-cream/40 mt-0.5">Sofia · 2 years dancing</p>
-        </div>
       </div>
 
       <!-- Review 4 -->
       <div class="bg-cream/5 border border-gold/20 rounded-sm p-7 card-hover">
-        <div class="flex mb-4">
-          <span class="text-gold text-lg">★★★★★</span>
-        </div>
-        <p class="font-body text-cream/80 leading-relaxed mb-6 text-sm">
-          <span class="quote-mark"></span>Georgi is an exceptional instructor — calm, precise, and endlessly enthusiastic.
-          The Stara Zagora community he's built feels intimate and welcoming. I drove an hour each way
-          for six months just to take his classes. Worth every kilometre.
+        <div class="flex mb-4"><span class="text-gold text-lg">★★★★★</span></div>
+        <p class="font-body text-cream/80 leading-relaxed text-sm">
+          <span class="quote-mark"></span>A great place to learn Lindy Hop! The teachers are very friendly and welcoming,
+          and the beginner course that I attended was paced very well. 5/5, will definitely come back
+          for the next level.
         </p>
-        <div class="border-t border-gold/15 pt-4">
-          <p class="font-body font-semibold text-cream text-sm">Nikolay P.</p>
-          <p class="font-body text-xs text-cream/40 mt-0.5">Kazanlak · Lindy Hop student</p>
-        </div>
       </div>
 
       <!-- Review 5 -->
       <div class="bg-cream/5 border border-gold/20 rounded-sm p-7 card-hover">
-        <div class="flex mb-4">
-          <span class="text-gold text-lg">★★★★★</span>
-        </div>
-        <p class="font-body text-cream/80 leading-relaxed mb-6 text-sm">
-          <span class="quote-mark"></span>I came for a one-off taster class and that was eighteen months ago.
-          Viktor's way of connecting the dance to the music, to the history, to the actual humanity
-          behind it — it's unlike any other dance class I've taken in four different countries.
-          Swing Society is doing something genuinely special here.
+        <div class="flex mb-4"><span class="text-gold text-lg">★★★★★</span></div>
+        <p class="font-body text-cream/80 leading-relaxed text-sm">
+          <span class="quote-mark"></span>Absolutely amazing school! Thanks to the incredible teachers and the welcoming
+          atmosphere they've created, this is a place where I feel truly safe and confident to learn and
+          dance. A huge thank you — I'm so grateful to have found this wonderful community!
         </p>
-        <div class="border-t border-gold/15 pt-4">
-          <p class="font-body font-semibold text-cream text-sm">Teodora V.</p>
-          <p class="font-body text-xs text-cream/40 mt-0.5">Sofia · Solo Jazz &amp; Lindy Hop</p>
-        </div>
-      </div>
-
-      <!-- CTA card -->
-      <div class="border-2 border-dashed border-gold/30 rounded-sm p-7 flex flex-col items-center justify-center text-center">
-        <p class="font-display text-xl font-bold italic text-gold mb-3">Your story starts here.</p>
-        <p class="font-body text-sm text-cream/60 leading-relaxed mb-6">
-          Join the next beginner group and discover why Lindy Hop and Jazz Tap have captivated dancers around the world for nearly a century.
-        </p>
-        <a href="#new-groups"
-           class="px-6 py-3 bg-gold text-charcoal font-semibold font-body text-xs tracking-wider uppercase rounded hover:bg-goldDark transition-colors">
-          See New Groups
-        </a>
       </div>
 
     </div>
@@ -1026,11 +935,10 @@
         <ul class="space-y-2 font-body text-sm text-cream/60">
           <li><a href="#about"      class="hover:text-gold transition-colors">About the School</a></li>
           <li><a href="#dances"     class="hover:text-gold transition-colors">Our Dances</a></li>
-          <li><a href="#team"       class="hover:text-gold transition-colors">Instructors</a></li>
+          <li><a href="#team"       class="hover:text-gold transition-colors">Teachers</a></li>
           <li><a href="#schedule"   class="hover:text-gold transition-colors">Weekly Schedule</a></li>
           <li><a href="#new-groups" class="hover:text-gold transition-colors">New Beginner Groups</a></li>
           <li><a href="#events"     class="hover:text-gold transition-colors">Upcoming Events</a></li>
-          <li><a href="#reviews"    class="hover:text-gold transition-colors">Student Reviews</a></li>
         </ul>
       </div>
 
@@ -1038,23 +946,23 @@
       <div>
         <p class="font-body text-xs font-semibold text-gold tracking-widest uppercase mb-5">Get in Touch</p>
         <div class="space-y-3 font-body text-sm text-cream/60">
-          <a href="mailto:hello@swingsociety.bg"
+          <a href="mailto:bgswingsociety@gmail.com"
              class="flex items-center gap-2.5 hover:text-gold transition-colors group">
             <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
               <polyline points="22,6 12,13 2,6"/>
             </svg>
-            hello@swingsociety.bg
+            bgswingsociety@gmail.com
           </a>
 
-          <a href="https://www.instagram.com/swingsocietybg" target="_blank" rel="noopener"
+          <a href="https://www.instagram.com/bgswingsociety" target="_blank" rel="noopener"
              class="flex items-center gap-2.5 hover:text-gold transition-colors group">
             <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
               <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
               <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
               <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
             </svg>
-            @swingsocietybg
+            @bgswingsociety
           </a>
 
           <a href="https://www.facebook.com/swingsocietybg" target="_blank" rel="noopener"
@@ -1128,6 +1036,18 @@
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
+  }());
+
+  // Shuffle collage photos on every page load
+  (function () {
+    const photos = ['img/deni.jpg', 'img/kalina.jpg', 'img/miro.jpg', 'img/rosi.jpg', 'img/mitko.jpeg', 'img/viki.jpg'];
+    for (let i = photos.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [photos[i], photos[j]] = [photos[j], photos[i]];
+    }
+    for (let i = 1; i <= 6; i++) {
+      document.getElementById('collage-' + i).src = photos[i - 1];
+    }
   }());
 </script>
 
